@@ -10,7 +10,7 @@ public class CheckboxTest {
         openBrowser("chrome");
         visit("https://the-internet.herokuapp.com/checkboxes");
         uncheck(How.XPATH, "//form[@id='checkboxes]/input[1]");
-        uncheck(How.XPATH, "//form[@id='checkboxes]/input[2]");
+        uncheck(How.XPATH, "//form[@id='checkboxes]/input[2:]");
 
         if (!find(How.XPATH,"//form[@id='checkboxes]/input[1]").isSelected()){
             click(How.XPATH, "//form[@id='checkboxes]/input[1]");

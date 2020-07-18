@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="AK27" />
+        <module name="tvn_selenium_java_2020" />
       </profile>
     </annotationProcessing>
   </component>

@@ -1,5 +1,6 @@
 package supports;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +11,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.Select;
+
+import static io.github.bonigarcia.wdm.config.DriverManagerType.CHROME;
 
 public class Browser {
     private static WebDriver driver;
@@ -60,5 +64,29 @@ public class Browser {
     public static void main(String[] args) {
         openBrowser("ie");
         openBrowser("coccoc");
+    }
+
+    public static void backToPreviousPage(){
+        driver.navigate().back();
+    }
+    public static void check(How by, String locator){
+        if (!find(by,locator).isSelected())
+            click(by, locator);
+    }
+    public static void uncheck(How by, String locator){
+        if (find(by,locator).isSelected())
+            click(by, locator);
+    }
+    public static void select (How how, String locator, int id){
+        Select dropDown = new Select(find(how, locator));
+        dropDown.selectByIndex(id);
+    }
+    public static void select (How how, String locator, String value){
+        Select dropDown = new Select(find(how, locator));
+        dropDown.selectByValue(value);
+    }
+    public static void selectByVisibleText (How how, String locator, String visibleText){
+        Select dropDown = new Select(find(how, locator));
+        dropDown.selectByVisibleText(visibleText);
     }
 }
